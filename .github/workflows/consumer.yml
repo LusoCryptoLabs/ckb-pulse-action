@@ -1,0 +1,12 @@
+# Copy this file to .github/workflows/ckb-lessons.yml in your CKB project.
+name: consumer
+on:
+  pull_request:
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  lessons:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: LusoCryptoLabs/ckb-pulse-action@v1
