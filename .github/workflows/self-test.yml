@@ -1,0 +1,13 @@
+# The action on its own pull requests: a pull request that adds CKB code gets the comment.
+name: self-test
+on:
+  pull_request:
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  lessons:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
