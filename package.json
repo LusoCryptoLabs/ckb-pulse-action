@@ -1,0 +1,6 @@
+{
+  "name": "ckb-pulse-action",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test" }
+}

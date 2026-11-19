@@ -1,0 +1,22 @@
+name: CKB Pulse lessons
+description: Comments on a pull request with the lessons from real CKB fixes that apply to the lines it changes.
+author: LusoCryptoLabs
+branding:
+  icon: book-open
+  color: red
+inputs:
+  github-token:
+    description: Token to read the pull request and write the comment.
+    default: ${{ github.token }}
+  pulse-url:
+    description: The CKB Pulse server.
+    default: https://pulse.lusocryptolabs.com
+  fail-on-avoid:
+    description: Fail the check when a changed line repeats a pattern a lesson says to avoid.
+    default: "false"
+  max-lessons:
+    description: At most this many lessons in the comment.
+    default: "10"
+runs:
+  using: node24
+  main: index.js
