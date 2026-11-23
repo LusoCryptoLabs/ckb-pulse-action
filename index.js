@@ -7,7 +7,7 @@ const input = (name, d = '') => (process.env[`INPUT_${name.toUpperCase()}`] || d
 const token = input('github-token')
 const pulse = input('pulse-url', 'https://pulse.lusocryptolabs.com').replace(/\/+$/, '')
 const failOnAvoid = input('fail-on-avoid', 'false') === 'true'
-const max = Math.max(1, Math.min(20, Number(input('max-lessons', '10')) || 10))
+const max = Math.max(1, Math.min(20, Number(input('max-lessons', '3')) || 3))
 const api = process.env.GITHUB_API_URL || 'https://api.github.com'
 const server = process.env.GITHUB_SERVER_URL || 'https://github.com'
 const summary = (text) => { if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, text + '\n') }
@@ -39,7 +39,7 @@ async function main() {
   if (chunks.length) {
     let r
     try {
-      r = await fetch(`${pulse}/api/check`, { method: 'POST', headers: { 'content-type': 'application/json', 'user-agent': 'ckb-pulse-action' }, body: JSON.stringify({ chunks }) })
+      r = await fetch(`${pulse}/api/check`, { method: 'POST', headers: { 'content-type': 'application/json', 'user-agent': 'ckb-pulse-action' }, body: JSON.stringify({ chunks, limit: max }) })
     } catch (e) { warn(`CKB Pulse did not answer (${e.message}): no lessons this time.`); return }
     if (!r.ok) { warn(`CKB Pulse answered ${r.status}: no lessons this time.`); return }
     lessons = (await r.json()).lessons.slice(0, max)
