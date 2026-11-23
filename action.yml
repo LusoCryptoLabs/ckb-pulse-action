@@ -16,7 +16,7 @@ inputs:
     default: "false"
   max-lessons:
     description: At most this many lessons in the comment.
-    default: "10"
+    default: "3"
 runs:
   using: node24
   main: index.js

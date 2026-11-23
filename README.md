@@ -39,7 +39,7 @@ No key, no account and no checkout are needed.
 | Input | Default | What it does |
 | --- | --- | --- |
 | `fail-on-avoid` | `false` | Fail the check when a changed line repeats a pattern a lesson says to avoid. |
-| `max-lessons` | `10` | At most this many lessons in the comment (up to 20). |
+| `max-lessons` | `3` | At most this many lessons in the comment (up to 20). |
 | `pulse-url` | `https://pulse.lusocryptolabs.com` | The CKB Pulse server. |
 | `github-token` | `github.token` | Token to read the pull request and write the comment. |
 
